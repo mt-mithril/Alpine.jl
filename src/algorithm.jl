@@ -248,7 +248,7 @@ function local_solve(m::Optimizer; presolve = false)
    end
 
    x = load_nonlinear_model(m, local_solve_model, l_var, u_var)
-   (!m.d_orig.want_hess) && MOI.initialize(m.d_orig, [:Grad, :Jac, :Hess, :HessVec, :ExprGraph]) # Safety scheme for sub-solvers re-initializing the NLPEvaluator
+   (!m.d_orig.want_hess) && MOI.initialize(m.d_orig, [:Grad, :Jac,  :ExprGraph]) # Safety scheme for sub-solvers re-initializing the NLPEvaluator
 
    if !presolve
       warmval = m.best_sol[1:m.num_var_orig]
