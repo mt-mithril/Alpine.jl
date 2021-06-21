@@ -483,7 +483,7 @@ _index_to_variable_ref(m::JuMP.Model, idx::Int64) = JuMP.VariableRef(m, MOI.Vari
 
 function load!(m::Optimizer)
     # Initialize NLP interface
-    MOI.initialize(m.d_orig, [:Grad, :Jac, :Hess, :HessVec, :ExprGraph]) # Safety scheme for sub-solvers re-initializing the NLPEvaluator
+    MOI.initialize(m.d_orig, [:Grad, :Jac,  :ExprGraph]) # Safety scheme for sub-solvers re-initializing the NLPEvaluator
 
     # Collect objective & constraint expressions
     if m.has_nl_objective
